@@ -1,7 +1,10 @@
 export default {
-  namespace: "example",
+  namespace: "indexPage",
 
-  state: {},
+  state: {
+    dates:[],
+    articles:[]
+  },
 
   subscriptions: {
     setup({ dispatch, history }) {
@@ -11,7 +14,6 @@ export default {
 
   effects: {
     *fetch({ payload }, { call, put }) {
-      // eslint-disable-line
       yield put({ type: "save" });
     }
   },

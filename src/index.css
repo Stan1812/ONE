@@ -2,4 +2,16 @@
 html, body, :global(#root) {
   height: 100%;
 }
+.icon {
+  width: 1.5em; height: 1.5em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+.iconfont{
+  font-size:50px !important;
+}
+/* <svg class="icon" aria-hidden="true">
+    <use xlink:href="#icon-xxx"></use>
+</svg> */
 

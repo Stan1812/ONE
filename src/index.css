@@ -11,6 +11,10 @@ html, body, :global(#root) {
 .iconfont{
   font-size:50px !important;
 }
+h1,h2,h3,h4,h5,div{
+  margin: 0;
+  padding:0;
+}
 /* <svg class="icon" aria-hidden="true">
     <use xlink:href="#icon-xxx"></use>
 </svg> */

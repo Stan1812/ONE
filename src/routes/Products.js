@@ -5,7 +5,6 @@ import ProductList from "../components/ProductList";
 class Products extends Component {
 
   UNSAFE_componentWillMount() {
-    console.log("fff")
     this.props.dispatch({
       type: "products/delete",
       payload: 1

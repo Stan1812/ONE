@@ -2,13 +2,13 @@ import React from "react";
 import { TabBar } from "antd-mobile";
 import { connect } from "dva";
 import styles from "./IndexPage.css";
-// import One from "../components/OneList";
+import One from "../routes/One";
 import Products from "../routes/Products";
 class IndexPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: "redTab",
+      selectedTab: "ONE",
       hidden: false,
       fullScreen: true
     };
@@ -18,8 +18,7 @@ class IndexPage extends React.Component {
   renderContent(page) {
     return (
       <div styleaname={styles.main}>
-        {/* {page === "one" ? <One /> : <One />} */}
-        <Products />
+        {page === "ONE" ? <One  /> : <Products />}
       </div>
     );
   }
@@ -48,15 +47,15 @@ class IndexPage extends React.Component {
                 style={{ fontSize: "22px" }}
               />
             }
-            selected={this.state.selectedTab === "blueTab"}
+            selected={this.state.selectedTab === "ONE"}
             onPress={() => {
               this.setState({
-                selectedTab: "blueTab"
+                selectedTab: "ONE"
               });
             }}
             data-seed="logId"
           >
-            {this.renderContent("Life")}
+            {this.renderContent("ONE")}
           </TabBar.Item>
           <TabBar.Item
             icon={
@@ -73,10 +72,10 @@ class IndexPage extends React.Component {
             }
             title="ALL"
             key="ALL"
-            selected={this.state.selectedTab === "redTab"}
+            selected={this.state.selectedTab === "ALL"}
             onPress={() => {
               this.setState({
-                selectedTab: "redTab"
+                selectedTab: "ALL"
               });
             }}
             data-seed="logId1"

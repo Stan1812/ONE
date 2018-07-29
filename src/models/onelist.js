@@ -2,53 +2,49 @@ import * as ONEAPI from "../services/api_3.5";
 
 export default {
   namespace: "onelist",
-  state: {
-    content: []
-  },
+  state: {},
   reducers: {
-    "onelist/start"(state) {
+    "date/start"(state) {
       return { ...state, isLoading: true };
     },
-
-    "onelist/end"(state) {
-      return { ...state, isLoading: false };
+    "date/success"(state, action) {
+      return {
+        ...state,
+        date: action.payload.data,
+        loaded: true
+      };
     },
-
-    "onslist/error"(state, action) {
-      return { ...state, getListErrorMsg: action.payload };
+    "list/success"(state, action) {
+      return {
+        ...state,
+        weather:action.payload.data.weather,
+        content: action.payload.data.content_list,
+        menu:action.payload.data.menu.list,
+        loaded: true
+      };
     },
-
-    "onelist/success"(state, action) {
-      return { ...state, ...action.payload, loaded: true, getListErrorMsg: "" };
-    }
   },
   effects: {
-    *getOneList(action, { put }) {
+    *getDate(action, { call,put }) {
       yield put({
-        type: "oneList/start"
+        type: "date/start"
       });
-      let date = action.payload.date;
-      let result = yield ONEAPI.getDate(date);
-
-      if (result.message) {
-        yield put({
-          type: "onelist/error",
-          payload: result.message
-        });
-      } else {
-        yield put({
-          type: "onelist/success",
-          payload: { result }
-        });
-        yield put({
-          type: "onelist/sync"
-        });
-      }
+      let dateResult = yield ONEAPI.getDate();
       yield put({
-        type: "onelist/end"
+        type: "date/success",
+        payload: { data: dateResult.data.data }
       });
+      let listResult = yield ONEAPI.getOneList(dateResult.data.data[0])
+       yield put(
+         {
+           type:"list/success",
+           payload:listResult.data
+         }
+       )
     },
-    *getDate() {}
+    *getOne(action,{put}){
+      yield 
+    }
   },
   subscriptions: {}
 };

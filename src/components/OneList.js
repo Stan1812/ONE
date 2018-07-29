@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const OneList = ({content }) => {
+const OneList = (content ) => {
   return(
-    <div> this is one</div>
+
+    <div> {content.title}</div>
   )
 };
 
 OneList.propTypes = {
-  content: PropTypes.array.isRequired
+  content: PropTypes.object
 };
 
 export default OneList;

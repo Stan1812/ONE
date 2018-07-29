@@ -1,10 +1,9 @@
 import request from "../utils/request";
-const baseUrl = url => {
+const baseUrl = url => 
   `http://v3.wufazhuce.com:8000${url}&version=4.0.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=web`;
-};
 
-export function getDate() {
-  return request(baseUrl("/api/onelist/idlist/?channel=wdj"));
+export async function getDate() {
+  return await request(baseUrl("/api/onelist/idlist/?channel=wdj"));
 }
 
 export function getOneList(date) {

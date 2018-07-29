@@ -2,8 +2,8 @@ import React from "react";
 import { TabBar } from "antd-mobile";
 import { connect } from "dva";
 import styles from "./IndexPage.css";
-import One from "../components/One";
-import Example from "../components/Example";
+// import One from "../components/OneList";
+import Products from "../routes/Products";
 class IndexPage extends React.Component {
   constructor(props) {
     super(props);
@@ -17,13 +17,8 @@ class IndexPage extends React.Component {
   renderContent(page) {
     return (
       <div styleaname={styles.main}>
-        {/* <div style={{ paddingTop: 60 }}>
-          this is “{pageText}” tab， show “{pageText}” information
-        </div> */}
-        <One />
-        {/* <Products></Products>
-         */}
-        <Example />
+        {/* {page === "one" ? <One /> : <One />} */}
+        <Products />
       </div>
     );
   }
@@ -87,30 +82,6 @@ class IndexPage extends React.Component {
           >
             {this.renderContent("ALL")}
           </TabBar.Item>
-          {/* <TabBar.Item
-            icon={
-              <i
-                className="iconfont icon-setting-fill"
-                style={{ fontSize: "22px" }}
-              />
-            }
-            selectedIcon={
-              <i
-                className="iconfont icon-setting-fill-copy"
-                style={{ fontSize: "22px" }}
-              />
-            }
-            title="ME"
-            key="ME"
-            selected={this.state.selectedTab === "yellowTab"}
-            onPress={() => {
-              this.setState({
-                selectedTab: "yellowTab"
-              });
-            }}
-          >
-            {this.renderContent("My")}
-          </TabBar.Item> */}
         </TabBar>
       </div>
     );

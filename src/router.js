@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router, Route, Switch } from 'dva/router';
-import IndexPage from './routes/IndexPage';
+import IndexPage from './container/IndexPage';
 // import Products from './routes/Products';
 function RouterConfig({ history }) {
   return (

@@ -13,6 +13,7 @@ class IndexPage extends React.Component {
       fullScreen: true
     };
   }
+
   // 条件渲染one/all
   renderContent(page) {
     return (

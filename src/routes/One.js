@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "dva";
-import OneItem from "../components/OneItem";
-import Weather from "../components/Weather";
+import OneItem from "../components/One/OneItem";
+import Weather from "../components/One/Weather";
 
 class One extends Component {
   UNSAFE_componentWillMount() {

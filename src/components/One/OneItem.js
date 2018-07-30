@@ -1,16 +1,23 @@
 import React from "react";
-import { Card, WhiteSpace } from "antd-mobile";
+import { Link } from "dva/router";
+import { Card, WhiteSpace, Flex } from "antd-mobile";
 import PropTypes from "prop-types";
 import styles from "./OneItem.css";
-const category = ["摄影", "one story", "连载", "广告", "问答", "音乐", "影视"];
+const category = ["摄影", "one story", "连载", "问答", "音乐", "影视", "广告"];
+
 const OneItem = postData => (
   <div>
+        <WhiteSpace size="md" >            <span >{category[postData.category]}-</span>
+</WhiteSpace>
     <Card full>
       <Card.Header
         title={postData.title}
         extra={<span>{postData.author.user_name}</span>}
       />
       <Card.Body>
+    
+          
+ 
         <div className={styles.picContent}>
           <img
             className={styles.pic}
@@ -19,15 +26,25 @@ const OneItem = postData => (
           />
         </div>
         <WhiteSpace size="xs" />
-        <div className={styles.forward}>{postData.forward}</div>
+        <Link to={"/detail"}>
+          <div className={styles.forward}>{postData.forward}</div>
+        </Link>
       </Card.Body>
       <WhiteSpace size="sm" />
       <Card.Footer
         content={postData.last_update_date}
-        extra={<div>{postData.like_count}</div>}
+        extra={
+          <div>
+            {" "}
+            <i
+              className="iconfont icon-xin1"
+              style={{ color: "#60c3ff" }}
+            />{" "}
+            {postData.like_count}
+          </div>
+        }
       />
     </Card>
-    <WhiteSpace size="md" />
   </div>
 
   // <div className={styles.item}>

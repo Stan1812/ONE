@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const ProductList = ({ products }) => {
+const AllItem = ({ products }) => {
   this.ComponentWillMount = () => {
     console.log("fuck");
   };
@@ -11,8 +11,8 @@ const ProductList = ({ products }) => {
 };
 
 
-ProductList.propTypes = {
+AllItem.propTypes = {
   products: PropTypes.array.isRequired
 };
 
-export default ProductList;
+export default AllItem;

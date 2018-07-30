@@ -3,7 +3,7 @@ import { TabBar } from "antd-mobile";
 import { connect } from "dva";
 import styles from "./IndexPage.css";
 import One from "../routes/One";
-import Products from "../routes/Products";
+import All from "../routes/All";
 class IndexPage extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +18,7 @@ class IndexPage extends React.Component {
   renderContent(page) {
     return (
       <div styleaname={styles.main}>
-        {page === "ONE" ? <One  /> : <Products />}
+        {page === "ONE" ? <One  /> : <All />}
       </div>
     );
   }

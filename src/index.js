@@ -5,7 +5,7 @@ import "./index.css";
 const app = dva({
   initialState: {
     products: [{ name: "dva", id: 1 }, { name: "antd", id: 2 }],
-    onelist:{content:{},date:[],menu:[],weather:{}}
+    onelist:{content:[],date:[],menu:[],weather:{}}
   }
 });
 // 2. Plugins

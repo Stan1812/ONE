@@ -17,15 +17,15 @@ export default {
     "list/success"(state, action) {
       return {
         ...state,
-        weather:action.payload.data.weather,
+        weather: action.payload.data.weather,
         content: action.payload.data.content_list,
-        menu:action.payload.data.menu.list,
+        menu: action.payload.data.menu.list,
         loaded: true
       };
-    },
+    }
   },
   effects: {
-    *getDate(action, { call,put }) {
+    *getDate(action, { call, put }) {
       yield put({
         type: "date/start"
       });
@@ -34,16 +34,14 @@ export default {
         type: "date/success",
         payload: { data: dateResult.data.data }
       });
-      let listResult = yield ONEAPI.getOneList(dateResult.data.data[0])
-       yield put(
-         {
-           type:"list/success",
-           payload:listResult.data
-         }
-       )
+      let listResult = yield ONEAPI.getOneList(dateResult.data.data[0]);
+      yield put({
+        type: "list/success",
+        payload: listResult.data
+      });
     },
-    *getOne(action,{put}){
-      yield 
+    *getOne(action, { put }) {
+      yield;
     }
   },
   subscriptions: {}

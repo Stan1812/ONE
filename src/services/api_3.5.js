@@ -9,5 +9,7 @@ export async function getDate() {
 export function getOneList(date) {
   return request(baseUrl(`/api/onelist/${date}/0?channel=wdj`));
 }
+// content_list[0].category: 
+// 0:摄影, 1:one story ,2: 连载 3: 广告 4:问答 ,5:音乐,6:影视
 
 // export function

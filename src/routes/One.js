@@ -1,27 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "dva";
-import OneList from "../components/OneList";
+import OneItem from "../components/OneItem";
+import Weather from "../components/Weather";
 
-
-class One extends Component{
-  UNSAFE_componentWillMount ()  {
-    console.log("ff")
+class One extends Component {
+  UNSAFE_componentWillMount() {
     this.props.dispatch({
       type: "onelist/getDate"
     });
-  };
-  render(){
+  }
+  render() {
     return (
       <div>
-        <h2>List of One</h2>
-        {this.props.onelist.menu.map(
-          (ele,index)=>{ 
-           return <OneList key={index} {...ele}></OneList>
-          }
-        )}
-   
-        {/* <p>{this.props.onelist.weather}</p> */}
-        {/* <OneList {...this.props.onelist.weather} /> */}
+        <Weather {...this.props.onelist.weather} />
+        {this.props.onelist.content.map((ele, index) => {
+          return <OneItem key={index} {...ele} />;
+        })}
       </div>
     );
   }

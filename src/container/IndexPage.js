@@ -25,7 +25,7 @@ class IndexPage extends React.Component {
 
   render() {
     return (
-      <div style={{ height: "100%" }}>
+      <div style={{ height: "100%",overflow:"hidden"}}>
         <TabBar
           unselectedTintColor="#949494"
           tintColor="#33A3F4"

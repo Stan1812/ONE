@@ -37,4 +37,7 @@
   background-color: "white";
   height: "100%";
   text-align: "center";
+  width:100%;
+  overflow-x: hidden;
+  color:red
 }

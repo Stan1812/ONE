@@ -8,20 +8,19 @@ export async function getDate() {
 
 //  category:0:摄影, 1:one story ,2: 连载 3: 广告 4:问答 ,5:音乐,6:影视
 export async function getOneList(date) {
-  return request(baseUrl(`/api/onelist/${date}/0?channel=wdj`));
+  return await request(baseUrl(`/api/onelist/${date}/0?channel=wdj`));
 }
 
-export async function getArticleDetail(itemId, sourceId) {
-  return request(
+export async function getArticleDetail(itemId) {
+  return await request(
     baseUrl(
-      `/api/essay/${itemId}?channel=wdj&source=summary&source_id=${sourceId}`
+      `/api/essay/${itemId}?channel=wdj&source=summary`
     )
   );
 }
 export async function getMusicDetail(itemId) {
-  return request(baseUrl(`/api/music/detail/ + ${itemId} + ?channel=wdj`));
+  return await request(baseUrl(`/api/music/detail/ + ${itemId} + ?channel=wdj`));
 }
 export async function getMovieDetail(itemId) {
-  return request(baseUrl(`/api/movie/ ${itemId} /story/1/0?channel=wdj`));
+  return await request(baseUrl(`/api/movie/ ${itemId} /story/1/0?channel=wdj`));
 }
-// export function

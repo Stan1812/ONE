@@ -1,30 +1,40 @@
-import * as ONEAPI from "../services/api_3.5"
+import * as ONEAPI from "../services/api_3.5";
 export default {
   namespace: "detail",
-  state: {
-    detailInfo:{}
-  },
+  state: {},
   reducers: {
-    add(state, { payload: todo }) {
-      // 保存数据到 state
-      return [...state, todo];
+    "current"(state, action) {
+      return {
+        ...state,
+        currentArticle: action.payload.data
+      };
     },
+    "setCurArticle"(state,action){
+      return {
+        ...state,
+        article:action.payload.data.data
+      }
+    }
   },
   effects: {
-    *save({ payload: todo }, { put, call }) {
-      // 调用 saveTodoToServer，成功后触发 `add` action 保存到 state
-      // yield call(saveTodoToServer, todo);
-      // yield put({ type: 'add', payload: todo });
-    },
+    *getDetail(action,{  put }) {
+      const itemId = action.payload.id
+      let result = yield ONEAPI.getArticleDetail(itemId);
+      console.log(result)
+      yield put({
+        type: "setCurArticle",
+        payload: { data: result.data }
+      });
+    }
   },
   subscriptions: {
     setup({ history, dispatch }) {
-      // 监听 history 变化，当进入 `/` 时触发 `load` action
       return history.listen(({ pathname }) => {
-        if (pathname === '/') {
-          dispatch({ type: 'load' });
+        if (pathname === "/detail") {
+          // dispatch({ type: "load" });
+          console.log("enter detail");
         }
       });
-    },
-  },
+    }
+  }
 };

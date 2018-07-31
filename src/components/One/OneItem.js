@@ -1,23 +1,20 @@
 import React from "react";
 import { Link } from "dva/router";
-import { Card, WhiteSpace, Flex } from "antd-mobile";
+import { Card, WhiteSpace } from "antd-mobile";
 import PropTypes from "prop-types";
 import styles from "./OneItem.css";
-const category = ["摄影", "one story", "连载", "问答", "音乐", "影视", "广告"];
+// const category = ["摄影", "one story", "连载", "问答", "音乐", "影视", "广告"];
 
-const OneItem = postData => (
+const OneItem = (postData) => (
   <div>
-        <WhiteSpace size="md" >            <span >{category[postData.category]}-</span>
-</WhiteSpace>
+    <WhiteSpace size="md" />
+
     <Card full>
       <Card.Header
         title={postData.title}
         extra={<span>{postData.author.user_name}</span>}
       />
-      <Card.Body>
-    
-          
- 
+      <Card.Body onClick={() =>postData.onClick(postData.item_id,postData.category)}>
         <div className={styles.picContent}>
           <img
             className={styles.pic}
@@ -68,9 +65,10 @@ const OneItem = postData => (
   // </div>
 );
 
-OneItem.propTypes = {
-  content: PropTypes.object
-};
+// OneItem.propTypes = {
+//   content: PropTypes.object,
+  
+// };
 
 export default OneItem;
 

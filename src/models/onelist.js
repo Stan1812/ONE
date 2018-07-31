@@ -40,8 +40,11 @@ export default {
         payload: listResult.data
       });
     },
-    *getOne(action, { put }) {
-      yield;
+    *sendOneId(action, { put }) {
+      yield put({
+        type: "detail/current",
+        payload: { data: action.payload.data }
+      });
     }
   },
   subscriptions: {}

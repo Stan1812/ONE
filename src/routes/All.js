@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "dva";
-import ProductList from "../components/ProductList";
+import AllItem from "../components/All/AllItem";
 
-class Products extends Component {
+class All extends Component {
 
   UNSAFE_componentWillMount() {
     this.props.dispatch({
-      type: "products/delete",
+      type: "alllist/delete",
       payload: 1
     });
   }
@@ -14,11 +14,11 @@ class Products extends Component {
     return (
       <div>
         <h2>List of Products</h2>
-        <ProductList products={this.props.products} />
+        <AllItem products={this.props.alllist} />
       </div>
     );
   }
 }
-export default connect(({ products }) => ({
-  products
-}))(Products);
+export default connect(({ alllist }) => ({
+  alllist
+}))(All);

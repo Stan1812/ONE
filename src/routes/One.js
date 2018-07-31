@@ -6,22 +6,26 @@ import Weather from "../components/One/Weather";
 class One extends Component {
   constructor(props) {
     super();
+    this.state = {
+      loading: false
+    };
   }
   UNSAFE_componentWillMount() {
     this.props.dispatch({
       type: "onelist/getDate"
     });
   }
+
   render() {
     function handleClick(id, type) {
       let postdata = {
         id: id,
         type: type
       };
-      console.log(postdata)
+      console.log(postdata);
       this.props.dispatch({
         type: "onelist/sendOneId",
-        payload: {data:postdata}
+        payload: { data: postdata }
       });
     }
     return (
@@ -38,5 +42,5 @@ class One extends Component {
 }
 
 export default connect(({ onelist }) => ({
-  onelist
+  onelist,
 }))(One);

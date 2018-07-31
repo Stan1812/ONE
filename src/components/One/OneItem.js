@@ -4,8 +4,8 @@ import { Card, WhiteSpace } from "antd-mobile";
 import PropTypes from "prop-types";
 import styles from "./OneItem.css";
 // const category = ["摄影", "one story", "连载", "问答", "音乐", "影视", "广告"];
-
-const OneItem = (postData) => (
+// const judgeType = id => id === 0;
+const OneItem = postData => (
   <div>
     <WhiteSpace size="md" />
 
@@ -14,7 +14,9 @@ const OneItem = (postData) => (
         title={postData.title}
         extra={<span>{postData.author.user_name}</span>}
       />
-      <Card.Body onClick={() =>postData.onClick(postData.item_id,postData.category)}>
+      <Card.Body
+        onClick={() => postData.onClick(postData.item_id, postData.category)}
+      >
         <div className={styles.picContent}>
           <img
             className={styles.pic}
@@ -43,32 +45,11 @@ const OneItem = (postData) => (
       />
     </Card>
   </div>
-
-  // <div className={styles.item}>
-  //   <span className={styles.type}>{category[postData.category]}</span>
-  //   <div>
-  //     <div className={styles.title}>{postData.title}</div>
-  //     <div className={styles.author}>{postData.author.user_name}</div>
-  //   </div>
-  //   <div className={styles.picContent}>
-  //     <img
-  //       className={styles.pic}
-  //       alt={postData.pic_info}
-  //       src={postData.img_url}
-  //     />
-  //   </div>
-  //   <div className={styles.forward}>{postData.forward}</div>
-  //   <div className={styles.footer}>
-  //     <span>{postData.last_update_date}</span>
-  //     <span>{postData.like_count}</span>
-  //   </div>
-  // </div>
 );
 
-// OneItem.propTypes = {
-//   content: PropTypes.object,
-  
-// };
+OneItem.propTypes = {
+  postData: PropTypes.object
+};
 
 export default OneItem;
 

@@ -1,0 +1,10 @@
+.articleContent {
+  line-height: 1.5rem;
+  color: #2b2f3b;
+}
+.articleContent p {
+  text-indent: 2em;
+}
+.articleContent img {
+  width: 100% !important;
+}

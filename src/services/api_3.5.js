@@ -11,16 +11,25 @@ export async function getOneList(date) {
   return await request(baseUrl(`/api/onelist/${date}/0?channel=wdj`));
 }
 
-export async function getArticleDetail(itemId) {
+export async function getArticleDetail({ id, type }) {
+  if (type === "movie" || type === "music") {
+    return await request(
+      baseUrl(`/api/${type}/detail/${id}?channel=wdj`)
+    );
+  } else {
+    return await request(
+      baseUrl(`/api/essay/${id}?channel=wdj&source=summary`)
+    );
+  }
+}
+export async function getDetailPlus(type, itemId) {
   return await request(
-    baseUrl(
-      `/api/essay/${itemId}?channel=wdj&source=summary`
-    )
+    baseUrl(`/api/${type}/detail/ + ${itemId} + ?channel=wdj`)
   );
 }
-export async function getMusicDetail(itemId) {
-  return await request(baseUrl(`/api/music/detail/ + ${itemId} + ?channel=wdj`));
-}
-export async function getMovieDetail(itemId) {
-  return await request(baseUrl(`/api/movie/ ${itemId} /story/1/0?channel=wdj`));
+export async function getTypeList(type, page) {
+  return await request(
+    baseUrl(`/api/channel/${type}/more/${page}?
+  channel=wdj`)
+  );
 }

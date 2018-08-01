@@ -8,9 +8,15 @@ const Detail = content => {
     <div>
       <WhiteSpace />
       <WingBlank size="md">
+        <WhiteSpace size="lg" />
+
+        {content.hp_title}
+        <WhiteSpace size="lg" />
         <div
           className={styles.articleContent}
-          dangerouslySetInnerHTML={{ __html: content.hp_content }}
+          dangerouslySetInnerHTML={{
+            __html: content.hp_content
+          }}
         />
       </WingBlank>
     </div>

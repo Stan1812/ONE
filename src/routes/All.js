@@ -5,10 +5,11 @@ import AllItem from "../components/All/AllItem";
 class All extends Component {
 
   UNSAFE_componentWillMount() {
-    this.props.dispatch({
-      type: "alllist/delete",
-      payload: 1
-    });
+    // this.props.dispatch({
+    //   type: "alllist/delete",
+    //   payload: 1
+    // });
+    console.log("all wil mounte")
   }
   render() {
     return (

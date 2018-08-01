@@ -18,8 +18,7 @@ export default {
   },
   effects: {
     *getDetail(action, { put }) {
-      const itemId = action.payload.id;
-      let result = yield ONEAPI.getArticleDetail(itemId);
+      let result = yield ONEAPI.getArticleDetail(action.payload.typeInfo);
       console.log(result);
       yield put({
         type: "setCurArticle",

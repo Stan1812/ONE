@@ -4,6 +4,7 @@ import { WingBlank, WhiteSpace, Card } from "antd-mobile";
 import styles from "./detail.css";
 
 const Movie = movie => {
+  const imgs = movie.photo;
   return (
     <div>
       <WhiteSpace />
@@ -24,15 +25,21 @@ const Movie = movie => {
       </Card>
       <WingBlank size="md">
         <WhiteSpace size="lg" />
+
+        <div>
+          {imgs.map(ele => {
+            return <img style={{ width: "100%" }} alt={ele} src={ele} />;
+            // return <span> {ele}</span>
+          })}
+        </div>
+        <WhiteSpace size="lg" />
+
         <div
           className={styles.articlemovie}
           dangerouslySetInnerHTML={{
             __html: movie.officialstory
           }}
         />
-        {/* {movie.photo.map(ele => {
-          return <img alt={ele} src={ele} />;
-        })} */}
       </WingBlank>
     </div>
   );

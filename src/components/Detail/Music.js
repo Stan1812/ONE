@@ -21,7 +21,8 @@ const Music = music => {
       </Card>
       <WingBlank size="md">
         <WhiteSpace size="lg" />
-        <div>{music.story_title}</div>
+        <div className={styles.title}>{ music.story_title}</div> 
+        {/* <div>{}</div> */}
         <div
           className={styles.articleContent}
           dangerouslySetInnerHTML={{

@@ -9,8 +9,7 @@ const Detail = content => {
       <WhiteSpace />
       <WingBlank size="md">
         <WhiteSpace size="lg" />
-
-        {content.hp_title}
+        <div className={styles.title}>{ content.hp_title}</div> 
         <WhiteSpace size="lg" />
         <div
           className={styles.articleContent}

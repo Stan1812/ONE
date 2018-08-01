@@ -8,7 +8,7 @@ const app = dva({
   initialState: {
     alllist: [{ name: "dva", id: 1 }, { name: "antd", id: 2 }],
     onelist: { content: [], date: [], menu: [], weather: {} },
-    detail: { detailInfo: { id: 1 }, comments: [] }
+    detail: { detailInfo: { id: 1 }, comments: [], article: { photo: [] } }
   }
 });
 app.use(createLoading());

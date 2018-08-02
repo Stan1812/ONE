@@ -4,6 +4,7 @@ import { connect } from "dva";
 import Detail from "../components/Detail/Detail";
 import Music from "../components/Detail/Music";
 import Movie from "../components/Detail/Movie";
+import { routerRedux } from "dva/router";
 import Comment from "../components/Detail/Comment";
 class DetailPage extends Component {
   constructor(props) {
@@ -37,12 +38,15 @@ class DetailPage extends Component {
       isloading: nextProps.loading.global
     });
   }
-  judgeRenderType(content, categoryInfo) {
-    if (categoryInfo.type === "movie") {
-      return <Movie {...content} />;
-    } else if (categoryInfo.type === "music") {
-      return <Music {...content} />;
-    } else return <Detail {...content} />;
+  judgeRenderType(content, serialInfo) {
+    switch (serialInfo.type) {
+      case "movie":
+        return <Movie {...content} />;
+      case "music":
+        return <Music {...content} />;
+      default:
+        return <Detail {...content} />;
+    }
   }
   render() {
     let comments = this.props.detail.comments;
@@ -53,7 +57,10 @@ class DetailPage extends Component {
         <NavBar
           mode="light"
           icon={<Icon type="left" />}
-          onLeftClick={() => console.log("onLeftClick")}
+          onLeftClick={() => {
+            console.log("onLeftClick");
+            this.props.history.go(-1);
+          }}
         >
           {" "}
           <ActivityIndicator animating={this.state.isloading} />

@@ -1,4 +1,6 @@
 import * as ONEAPI from "../services/api_3.5";
+import { routerRedux } from 'dva/router';
+import { select } from "redux-saga/effects";
 export default {
   namespace: "detail",
   state: {},
@@ -24,13 +26,23 @@ export default {
         type: "setCurArticle",
         payload: { data: result.data }
       });
-    }
+    },
+    // *director(action, { put, call, select }) {
+    //   let result = yield select(state => state.detail.currentArticle);
+    //   console.log(result);
+    //   if (result) {
+    //     //  history.go(-1)
+    //     yield put(routerRedux.go(-1));
+    //   }
+    // }
   },
   subscriptions: {
     setup({ history, dispatch }) {
       return history.listen(({ pathname }) => {
         if (pathname === "/detail") {
-          // dispatch({ type: "load" });
+          // const isRedirect = select(state => state.detail.currentArticle);
+          // console.log(isRedirect);
+          // dispatch({ type: "director" });
           console.log("enter detail");
         }
       });

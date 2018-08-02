@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "dva";
 import OneItem from "../components/One/OneItem";
 import Weather from "../components/One/Weather";
+// import MusicPlayer from "../components/MusicPlayer/MusicPlayer";
+import QueueAnim from "rc-queue-anim";
 
 class One extends Component {
   constructor(props) {
@@ -10,7 +12,7 @@ class One extends Component {
       loading: false
     };
   }
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     this.props.dispatch({
       type: "onelist/getDate"
     });
@@ -30,17 +32,20 @@ class One extends Component {
     }
     return (
       <div>
+        {/* <MusicPlayer /> */}
         <Weather {...this.props.onelist.weather} />
-        {this.props.onelist.content.map((ele, index) => {
-          return (
-            <OneItem onClick={handleClick.bind(this)} key={index} {...ele} />
-          );
-        })}
+        <QueueAnim delay={500} className="queue-simple">
+          {this.props.onelist.content.map((ele, index) => {
+            return (
+              <OneItem onClick={handleClick.bind(this)} key={index} {...ele} />
+            );
+          })}
+        </QueueAnim>
       </div>
     );
   }
 }
 
 export default connect(({ onelist }) => ({
-  onelist,
+  onelist
 }))(One);

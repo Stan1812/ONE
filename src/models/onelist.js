@@ -1,5 +1,5 @@
 import * as ONEAPI from "../services/api_3.5";
-
+import { routerRedux } from 'dva/router';
 export default {
   namespace: "onelist",
   state: {},
@@ -45,6 +45,9 @@ export default {
         type: "detail/current",
         payload: { data: action.payload.data }
       });
+      // yield put({
+          
+      // })
     }
   },
   subscriptions: {}

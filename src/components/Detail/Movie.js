@@ -27,8 +27,8 @@ const Movie = movie => {
         <WhiteSpace size="lg" />
 
         <div>
-          {imgs.map(ele => {
-            return <img style={{ width: "100%" }} alt={ele} src={ele} />;
+          {imgs.map((ele,index) => {
+            return <img style={{ width: "100%" }} key={index} alt={ele} src={ele} />;
             // return <span> {ele}</span>
           })}
         </div>

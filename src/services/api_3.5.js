@@ -13,23 +13,21 @@ export async function getOneList(date) {
 
 export async function getArticleDetail({ id, type }) {
   if (type === "movie" || type === "music") {
-    return await request(
-      baseUrl(`/api/${type}/detail/${id}?channel=wdj`)
-    );
+    return await request(baseUrl(`/api/${type}/detail/${id}?channel=wdj`));
   } else {
     return await request(
       baseUrl(`/api/essay/${id}?channel=wdj&source=summary`)
     );
   }
 }
-export async function getDetailPlus(type, itemId) {
+// export async function getDetailPlus(type, itemId) {
+//   return await request(
+//     baseUrl(`/api/${type}/detail/ + ${itemId} + ?channel=wdj`)
+//   );
+// }
+export async function getTypeList(type, lastId = 0) {
   return await request(
-    baseUrl(`/api/${type}/detail/ + ${itemId} + ?channel=wdj`)
-  );
-}
-export async function getTypeList(type, page) {
-  return await request(
-    baseUrl(`/api/channel/${type}/more/${page}?
+    baseUrl(`/api/channel/${type}/more/${lastId}?
   channel=wdj`)
   );
 }

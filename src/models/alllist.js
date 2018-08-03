@@ -7,13 +7,13 @@ export default {
       return state.filter(item => item.id !== id);
     },
     saveList(state, { payload: data }) {
-      return { ...state, list: data };
+      return { ...state, list:data};
     }
   },
   effects: {
     *getList({ payload: data }, { put, call }) {
-      yield call(ONEAPI.getTypeList, data);
-      yield put({ type: "add", payload: data });
+     let result =  yield call(ONEAPI.getTypeList, data);
+      yield put({ type: "saveList", payload: result.data.data });
     }
   },
   subscriptions: {}

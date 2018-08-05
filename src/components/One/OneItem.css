@@ -2,7 +2,7 @@
 .picContent{
   width:100%;
 }
-.pic {
+.picContent img{
   width: 100%;
   overflow: hidden;
 }

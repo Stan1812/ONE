@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "dva/router";
 import { Card, WhiteSpace } from "antd-mobile";
 import PropTypes from "prop-types";
+
+import PlaceHolderImg from "../PlaceHolderImg/holderImg";
 import styles from "./OneItem.css";
 // const category = ["摄影", "one story", "连载", "问答", "音乐", "影视", "广告"];
 // const judgeType = id => id === 0;
@@ -18,11 +20,8 @@ const OneItem = postData => (
         onClick={() => postData.onClick(postData.item_id, postData.category)}
       >
         <div className={styles.picContent}>
-          <img
-            className={styles.pic}
-            alt={postData.pic_info}
-            src={postData.img_url}
-          />
+
+          <PlaceHolderImg imgSrc={postData.img_url}/>
         </div>
         <WhiteSpace size="xs" />
         <Link to={"/detail"}>

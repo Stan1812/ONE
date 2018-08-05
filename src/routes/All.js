@@ -7,27 +7,33 @@ import { Popover, NavBar, Icon } from "antd-mobile";
 const Item = Popover.Item;
 
 class All extends Component {
-  state = {
-    visible: false,
-    selected: "reading"
-  };
-  
+  constructor(props) {
+    super();
+    this.state = {
+      visible: false,
+      selected: "reading"
+    };
+  }
+
   componentDidMount() {
     console.log("all did mounted");
-    this.getMes()
+    this.getMes();
   }
   onSelect = opt => {
-    this.setState({
-      visible: false,
-      selected: opt.props.value
-    },this.getMes());
+    this.setState(
+      {
+        visible: false,
+        selected: opt.props.value
+      },
+      this.getMes
+    );
   };
-  getMes=()=>{
+  getMes = () => {
     this.props.dispatch({
       type: "alllist/getList",
       payload: this.state.selected
     });
-  }
+  };
   handleVisibleChange = visible => {
     this.setState({
       visible

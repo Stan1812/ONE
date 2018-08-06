@@ -1,5 +1,4 @@
 import * as ONEAPI from "../services/api_3.5";
-import { routerRedux } from 'dva/router';
 export default {
   namespace: "onelist",
   state: {},
@@ -29,12 +28,32 @@ export default {
       yield put({
         type: "date/start"
       });
-      let dateResult = yield ONEAPI.getDate();
+
+      // 改改改
+      let dates,
+        sessionDate = sessionStorage.getItem("date");
+      console.log(sessionDate !== null);
+      if (sessionDate !== null) {
+        dates = JSON.parse(sessionDate);
+      } else {
+        dates = yield ONEAPI.getDate();
+        sessionStorage.setItem("date", JSON.stringify(dates));
+      }
       yield put({
         type: "date/success",
-        payload: { data: dateResult.data.data }
+        payload: { data: dates.data.data }
       });
-      let listResult = yield ONEAPI.getOneList(dateResult.data.data[0]);
+      yield put({ type: "getOne", payload: dates.data.data[0] });
+    },
+    *getOne({ payload: date }, { put, call }) {
+      let listResult,
+        sessionOneList = sessionStorage.getItem("onelist");
+      if (sessionOneList) {
+        listResult = JSON.parse(sessionOneList);
+      } else {
+        listResult = yield ONEAPI.getOneList(date);
+        sessionStorage.setItem("onelist", JSON.stringify(listResult));
+      }
       yield put({
         type: "list/success",
         payload: listResult.data
@@ -45,9 +64,6 @@ export default {
         type: "detail/current",
         payload: { data: action.payload.data }
       });
-      // yield put({
-          
-      // })
     }
   },
   subscriptions: {}
